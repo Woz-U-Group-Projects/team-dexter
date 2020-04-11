@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import '../search.css'
-import '../search.html'
+import '../search.css';
+import '../search.html';
 class search extends React.Component {
   constructor(props) {
     super(props);
