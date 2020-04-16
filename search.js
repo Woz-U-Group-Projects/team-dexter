@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import '../search.css';
-import '../search.html';
 class search extends React.Component {
   constructor(props) {
     super(props);
@@ -51,18 +50,45 @@ class search extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>List of tasks (React)</h3>
-        <input ref={this.searchName} />
-        <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
-        <ul>
-          {this.state.search.map(p => (
-            <li key={p.searchid}>
-              {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
-            </li>
-          ))}
-        </ul>
+<h1>inStitches Pattern Directory</h1>
+<p>Welcome to our Pattern Directory Page</p>
+    <div>
+    <h3>List of search (React)</h3>
+    <input ref={this.searchName} />
+    <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
+    <ul>
+      {this.state.search.map(p => (
+        <li key={p.searchid}>
+          {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
+        </li>
+      ))}
+    </ul>
+      <div class= "s003">
+  <form>
+    <div class=" inner-form">
+      <div class="input-field first-wrap">
+        <div class="input-select">
+          <select data-trigger name="choices-single-defaul">
+            <option placeholder>Category</option>
+            <option>Knitting Blanket Patterns</option>
+            <option>Crochet Blanket Patterns</option>
+            <option>Knitting Scarf Patterns</option>
+            <option>Crochet Scarf Patterns</option>
+            <option>Knitting Clothing Patterns</option>
+            <option>Crochet Clothing Patterns</option>
+          </select>
+        </div>
       </div>
+      <div class="input-field second-wrap">
+        <input id="search" type="text" placeholder="Enter Keywords?">
+      </div>
+      <div class="input-field thrid-wrap">
+        <button class="btn-search" type="button">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
     );
   }
 }
