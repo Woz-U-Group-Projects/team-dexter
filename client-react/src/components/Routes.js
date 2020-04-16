@@ -1,5 +1,6 @@
 import React from "react";
 import Home from '../screens/Home';
+import SignUp from '../screens/SignUp';
 import Task from '../screens/Task';
 import About from '../screens/About';
 import Navbar from "./Navbar";
@@ -13,8 +14,9 @@ const Routes = () => (
         <Navbar />
         <Switch>
             <Route exact path = "/" component={Home} />
-            <Route path = "/task" component={Task} />
             <Route path = "/about" component={About} />
+            <Route path = "/task" component={Task} />
+            <Route path = "/signup" component={SignUp} />
         </Switch>
         <Footer />
     </Router>
