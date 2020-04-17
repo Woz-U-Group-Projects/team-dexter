@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Logo from '../assets/logo-dark-bg.png';
+import Logo from '../static/logo-dark-bg.png';
 
 function Footer () {
         return(
@@ -18,6 +18,12 @@ function Footer () {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                            </li>
                         </ul>
                         </div>
                     </div>
@@ -25,7 +31,6 @@ function Footer () {
                     <p id="copyright">©inStitches. 2020. All Rights Reserved.</p>
                 </div>
             </div>
-            
         </footer>
     );
 }

@@ -1,36 +1,24 @@
 import React from 'react';
 
-class Login extends React.Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            token: "",
-            email: "",
-            password: ""
-        }
-    }
-
-    render() {
-        return(
-            <form>
-                <div className="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" placeholder="janelovescrochet@example.com" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <small id="emailHelp" className="form-text form-text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" placeholder="********" id="exampleInputPassword1" />
-                </div>
-                <div className="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Remember Me</label>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-        )
-    }
+export default class Login extends React.Component {
+  render() {
+    if (!this.props.token || this.props.token === "") {
+      return (
+        <div>
+          <div style={{color: "red"}}>{(this.props.error ? this.props.error: '')}</div>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="username" className="form-control" name="username" placeholder="janelovescrochet88" onChange={this.props.onUsernameChange} />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" className="form-control" name="password" onChange={this.props.onPasswordChange} />
+          </div>
+          <div>
+            <button onClick={this.props.onLogin}>Submit</button>
+          </div>
+        </div>
+      );
+    } else { return (<div>Logged In</div>); }
+  }
 }
-
-export default Login;
