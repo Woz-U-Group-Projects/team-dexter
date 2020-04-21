@@ -50,19 +50,9 @@ class search extends React.Component {
 
   render() {
     return (
+<div>
 <h1>inStitches Pattern Directory</h1>
 <p>Welcome to our Pattern Directory Page</p>
-    <div>
-    <h3>List of search (React)</h3>
-    <input ref={this.searchName} />
-    <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
-    <ul>
-      {this.state.search.map(p => (
-        <li key={p.searchid}>
-          {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
-        </li>
-      ))}
-    </ul>
       <div class= "s003">
   <form>
     <div class=" inner-form">
@@ -80,11 +70,20 @@ class search extends React.Component {
         </div>
       </div>
       <div class="input-field second-wrap">
-        <input id="search" type="text" placeholder="Enter Keywords?">
-      </div>
+        <input id="search" type="text" placeholder="Enter Keywords?"/>
+        <input ref={this.searchName} />
+    <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
+    <ul>
+      {this.state.search.map(p => (
+        <li key={p.searchid}>
+          {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
+        </li>
+      ))}
+    </ul>
       <div class="input-field thrid-wrap">
         <button class="btn-search" type="button">Search</button>
       </div>
+    </div>
     </div>
   </form>
 </div>
