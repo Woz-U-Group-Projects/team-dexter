@@ -50,17 +50,12 @@ class search extends React.Component {
 
   render() {
     return (
-<div>
+  <div>
 <h1>inStitches Pattern Directory</h1>
 <p>Welcome to our Pattern Directory Page</p>
-      <div class= "s003">
-  <form>
-    <div class=" inner-form">
-      <div class="input-field first-wrap">
-        <div class="input-select">
-          <select data-trigger name="choices-single-defaul">
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Category..">
-          <ul id="myUL">
+     <select data-trigger name="choices-single-defaul"/>
+       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Category.."/>
+        <ul id="myUL">
             <li><a href="#">Category</a></li>
             <li><a href="#">Knitting Blanket Patterns</a></li>
             <li><a href="#">Crochet Blanket Patterns</a></li>
@@ -69,13 +64,10 @@ class search extends React.Component {
             <li><a href="#">Knitting Clothing Patterns</a></li>
             <li><a href="#">Crochet Clothing Patterns</a></li>
             </ul>
-          </select>
-        </div>
-      </div>
       <div class="input-field second-wrap">
         <input id="search" type="text" placeholder="Enter Keywords?"/>
         <input ref={this.searchName} />
-    <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
+      <button type="button" className="btn btn-primary" onClick={this.addSearch}>add</button>
     <ul>
       {this.state.search.map(p => (
         <li key={p.searchid}>
@@ -87,12 +79,9 @@ class search extends React.Component {
         <button class="btn-search" type="button">Search</button>
       </div>
     </div>
-    </div>
-  </form>
-</div>
-</div>
+  </div>
     );
-  }
-}
+      }
+    }
 
 export default search;
