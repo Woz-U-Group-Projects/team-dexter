@@ -61,15 +61,13 @@ class search extends React.Component {
         <div class="input-select">
           <select data-trigger name="choices-single-defaul">
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Catergory.."/>
-          <ul id="myUL">
-          <li><a href="#">Category</a></li>
-          <li><a href="#">Knitting Blanket Patterns</a></li>
-          <li><a href="#">Crochet Blanket Patterns</a></li>
-          <li><a href="#">Knitting Scarf Patterns</a></li>
-          <li><a href="#">Crochet Scarf Patterns</a></li>
-          <li><a href="#">Knitting Clothing Patterns</a></li>
-          <li><a href="#">Crochet Clothing Patterns</a></li>
-          </ul>
+          <option>Category</option>
+          <option>Knitting Blanket Patterns</option>
+          <option>Crochet Blanket Patterns</option>
+          <option>Knitting Scarf Patterns</option>
+          <option>Crochet Scarf Patterns</option>
+          <option>Knitting Clothing Patterns</option>
+          <option>Crochet Clothing Patterns</option>>
           </select>
         </div>
       </div>
