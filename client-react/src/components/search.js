@@ -67,7 +67,7 @@ class search extends React.Component {
           <option>Knitting Scarf Patterns</option>
           <option>Crochet Scarf Patterns</option>
           <option>Knitting Clothing Patterns</option>
-          <option>Crochet Clothing Patterns</option>>
+          <option>Crochet Clothing Patterns</option>
           </select>
         </div>
       </div>
