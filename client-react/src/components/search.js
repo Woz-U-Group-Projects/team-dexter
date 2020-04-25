@@ -59,7 +59,7 @@ class search extends React.Component {
     <div class=" inner-form">
       <div class="input-field first-wrap">
         <div class="input-select">
-          <select data-trigger name="choices-single-defaul">
+          <select data-trigger name="choices-single-default">
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Catergory.."/>
           <option>Category</option>
           <option>Knitting Blanket Patterns</option>
