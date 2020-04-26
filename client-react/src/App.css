@@ -1,0 +1,119 @@
+:root {
+    --primary-color: #38E1E5;
+}
+
+/*================ Navbar.js ================*/
+#site-nav{
+    background-color: white;
+    border-bottom: 2px solid var(--primary-color);    
+    padding: 0.5em 5em;
+}
+
+.navbar{
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+}
+
+/*=============== Home.js ===================*/
+
+#background-video{
+    width: 100%;
+}
+
+#hero-content{
+    position: absolute;
+    padding: 25px;
+    z-index: 1;
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#hero-content .logo{
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: block;
+}
+
+#hero-content .tagline{
+    text-align: center;
+}
+.section-content{
+    background: rgba(255,255,255, 0.5);
+}
+
+/*============ Footer.js ==================*/
+.navbar-dark {
+    background-color: #38E1E5 !important;
+}
+
+/*============Forms===============*/
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.form-text-muted{
+    color: #38E1E5 !important;
+}
+
+@media (min-width: 320px) {
+    #background-video{
+        width: auto;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    #hero-content{
+        width: 80%;
+    }
+}
+
+@media (min-width: 576px) {
+    #hero-content{
+        width: 75%;
+    }
+    #background-video{
+        width: auto;
+        height: 100%;
+        object-fit: fill;
+    }
+ }
+
+@media (min-width: 768px) { 
+    #hero-content{
+        width: 75%;
+    }
+
+    #background-video{
+        width: auto;
+        height: 100%;
+        object-fit: fill;
+    }
+ }
+
+@media (min-width: 992px) {
+    #background-video{
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+    }
+
+    #hero-content{
+        width: 60%;
+    }
+  }
+
+@media (min-width: 1200px) { 
+    #hero-content{
+        width: 50%;
+    }
+ }
