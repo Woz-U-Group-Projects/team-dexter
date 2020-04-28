@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.groupproject.models.MySQLUserDetailsService;
+import com.example.groupproject.auth.MySQLUserDetailsService;
 import com.example.groupproject.models.User;
 import com.example.groupproject.models.UserRepository;
 
@@ -24,11 +25,11 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@Autowired
-	MySQLUserDetailsService userServices;
+	MySQLUserDetailsService userService;
 	
 	//Finds all users
     @GetMapping()
-    public List<User> getMessages() {
+    public List<User> getUsers() {
         List<User> foundUsers = userRepository.findAll();
         return foundUsers;
     }
@@ -45,7 +46,17 @@ public class UserController {
 	 
 	 @PostMapping("/signup")
 	 public void postUser(@RequestBody User newUser) {
-		 userServices.Save(newUser);
+		 userService.Save(newUser);
+	 }
+	 
+	 @PutMapping("/{id}")
+	 public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+		 User foundUser = userRepository.findById(id).orElse(null);
+		 if(foundUser != null) {
+			foundUser.setUsername(user.getUsername());
+			userRepository.save(foundUser);
+		 }
+		 return null;
 	 }
 	 
 	 @DeleteMapping("/{id}")

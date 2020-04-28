@@ -3,7 +3,7 @@ import Logo from '../static/logo.png';
 import "../App.css";
 import Login from '../components/Login';
 import Posts from '../components/Posts';
-// import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import BGVideo from "../static/homepage-bg-vid.mp4";
 // import axios from "axios";
 
@@ -12,7 +12,7 @@ const tagLine = "The home for all things crochet, knitting and sewing";
 
 // import Routes from "./components/Routes";
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = { token: "", username: "", password: "", posts: [], error: "" };
@@ -38,17 +38,13 @@ class App extends React.Component {
     });
   }
 
+  onGetPosts = (e) => {
+    e.preventDefault();
+    this.e.history.push('/feed');
+  }
+
   onUsernameChange = (e) => this.setState({ ...this.state, username: e.target.value });
   onPasswordChange = (e) => this.setState({ ...this.state, password: e.target.value });
-
-  onGetPosts = () => {
-    fetch("http://localhost:8080/api/posts", {
-      headers: { 'Authorization': this.state.token }
-    })
-    .then(res => res.json())
-    .then(json => this.setState({ ...this.state, posts: json }));
-    console.log(" Got posts");
-  }
 
   render() {
     return (
@@ -61,15 +57,15 @@ class App extends React.Component {
               onPasswordChange={this.onPasswordChange}
               onLogin={this.onLogin}
               error={this.state.error}></Login>)
-              : (<Posts Posts={this.state.posts} onGetPosts={this.onGetPosts}></Posts>)}
-            <video id="background-video" className="img-fluid" loop autoPlay>
-                <source src={BGVideo} type="video/mp4" />
-            </video>
+              : null}
         </div>
+        <video id="background-video" className="img-fluid" loop autoPlay>
+            <source src={BGVideo} type="video/mp4" />
+        </video>
       </header>
     );
   }
 }
 
 
-export default App;
+export default Home;

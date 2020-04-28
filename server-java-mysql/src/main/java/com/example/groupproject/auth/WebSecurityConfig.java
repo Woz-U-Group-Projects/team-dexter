@@ -1,4 +1,6 @@
-package com.example.groupproject.models;
+package com.example.groupproject.auth;
+
+import static com.example.groupproject.auth.AuthConstants.*;
 
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,45 +13,44 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.*;
-import static com.example.groupproject.models.AuthConstants.*;
-
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
-	@Autowired
-	  private MySQLUserDetailsService mySQLUserDetailsService;
+  @Autowired
+  private MySQLUserDetailsService mySQLUserDetailsService;
 
-	  @Bean
-	  public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
-	  }
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-	  @Autowired
-	  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.userDetailsService(mySQLUserDetailsService).passwordEncoder(passwordEncoder());
-	  }
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(mySQLUserDetailsService).passwordEncoder(passwordEncoder());
+  }
 
-	  @Override
-	  protected void configure(HttpSecurity http) throws Exception {
-	    http.cors()
-	      .and()
-	      .csrf().disable()
-	      .authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL, "/").permitAll()
-	      .anyRequest().authenticated()
-	      .and()
-	      .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-	      .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-	      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-	  }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.cors()
+      .and()
+      .csrf().disable()
+      .authorizeRequests()
+      .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/login", "/api/posts").permitAll()
+      .antMatchers(HttpMethod.GET, "/login/*", "/api/posts/**", "/api/user/**").permitAll()
+      .anyRequest().authenticated()
+      .and()
+      .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+      .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+  }
 
-	  @Bean
-	  CorsConfigurationSource corsConfigurationSource() {
-	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	    CorsConfiguration corsConfig = new CorsConfiguration();
-	    corsConfig.applyPermitDefaultValues();
-	    corsConfig.setExposedHeaders(Arrays.asList("Authorization"));
-	    source.registerCorsConfiguration("/**", corsConfig);
-	    return source;
-	  }
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    CorsConfiguration corsConfig = new CorsConfiguration();
+    corsConfig.applyPermitDefaultValues();
+    corsConfig.setExposedHeaders(Arrays.asList("Authorization"));
+    source.registerCorsConfiguration("/**", corsConfig);
+    return source;
+  }
 }

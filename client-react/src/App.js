@@ -1,6 +1,4 @@
 import React from "react";
-// import Login from './screens/Login';
-// import Posts from './screens/Posts';
 import "./App.css";
 import Routes from "./components/Routes";
 

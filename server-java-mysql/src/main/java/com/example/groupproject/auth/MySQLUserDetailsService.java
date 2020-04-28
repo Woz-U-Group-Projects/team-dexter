@@ -1,4 +1,4 @@
-package com.example.groupproject.models;
+package com.example.groupproject.auth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.example.groupproject.models.User;
+import com.example.groupproject.models.UserRepository;
 
 @Service
 public class MySQLUserDetailsService implements UserDetailsService {
