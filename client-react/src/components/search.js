@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import './search.css';
+import '../App.css';
 class search extends React.Component {
   constructor(props) {
     super(props);
@@ -59,24 +59,33 @@ class search extends React.Component {
     <div class=" inner-form">
       <div class="input-field first-wrap">
         <div class="input-select">
-          <select data-trigger name="choices-single-default">
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Catergory.."/>
-          <option>Category</option>
-          <option>Knitting Blanket Patterns</option>
-          <option>Crochet Blanket Patterns</option>
-          <option>Knitting Scarf Patterns</option>
-          <option>Crochet Scarf Patterns</option>
-          <option>Knitting Clothing Patterns</option>
-          <option>Crochet Clothing Patterns</option>
-          </select>
+          <ul>
+          <li><a href=  "https://www.allfreeknitting.com/Knit-Afghans-and-Blankets">Knitting Blanket Patterns</a></li>
+          <li><a href= "https://www.allfreecrochet.com/Crochet-Afghan-Patterns">Crochet Blanket Patterns</a></li>
+          <li><a href= "hhttps://www.allfreeknitting.com/Knit-Scarves">Knitting Scarf Patterns</a></li>
+          <li><a href= "https://www.allfreecrochet.com/Scarves">Crochet Scarf Patterns</a></li>
+          <li><a href= "https://www.allfreeknitting.com/Knitted-Sweaters">Knitting Clothing Patterns</a></li>
+          <li><a href= "https://www.allfreecrochet.com/Sweaters">Crochet Clothing Patterns</a></li>
+          </ul>
         </div>
       </div>
-      <div class="input-field second-wrap">
-        <input id="search" type="text" placeholder="Enter Keywords?"/>
-      <div class="input-field thrid-wrap">
-        <button class="btn-search" type="button">Search</button>
-      </div>
-    </div>
+      <br></br>
+      <div>
+        <form class="example" action="/action_page.php">
+        <input type="text" placeholder="Keywords.." name="keywords"/>
+        <button class="btn-search" type="button"><a href= "https:www.google.com">Search</a></button>
+        </form>
+     </div>
+      <br></br>
+      <form action="/action_page.php">
+         <label for="img">Select image:</label>
+         <br></br>
+         <input type="file" id="img" name="img" accept="image/*"/>
+         <br></br>
+         <form action="/action_page.php2" method="post">
+         <button class="btn-upload" type="button">Upload</button>
+         </form>
+      </form>
     </div>
   </form>
   </div>
