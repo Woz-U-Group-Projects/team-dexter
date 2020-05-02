@@ -13,16 +13,10 @@ function Footer () {
                 <div className="col-md">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/task">Tasks</NavLink>
-                        </li>
-                        <li className="nav-item">
                             <NavLink className="nav-link" to="/about">About</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/login">Login</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
                         </li>
                     </ul>
                     </div>

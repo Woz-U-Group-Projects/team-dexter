@@ -5,7 +5,7 @@
       if (!this.props.token || this.props.token === "") {
         return (
           <div>
-            <div style={{color: "red"}}>{(this.props.error ? this.props.error: '')}</div>
+            <div className="alert" style={{color: "red"}}>{(this.props.error ? this.props.error: '')}</div>
             <div>
               <label htmlFor="username">Username:</label>
               <input type="text" id="username" className="form-control" name="username" placeholder="janelovescrochet88" onChange={this.props.onUsernameChange} />

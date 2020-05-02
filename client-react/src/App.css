@@ -16,7 +16,7 @@
     color: var(--primary-color);
 }
 
-/*=============== Home.js ===================*/
+/*=============== Home.js / Login Form ===================*/
 
 #background-video{
     width: 100%;
@@ -50,6 +50,9 @@
     background: rgba(255,255,255, 0.5);
 }
 
+#homepage-login .alert{
+    text-align: center;
+}
 /*============ Footer.js ==================*/
 .navbar-dark {
     background-color: #38E1E5 !important;
@@ -64,6 +67,31 @@
 .form-text-muted{
     color: #38E1E5 !important;
 }
+
+/*============ About.js ==================*/
+.About {
+    text-align: center;
+}
+
+.About img {
+   display: block;
+   margin: 0 auto;
+   border-radius: 50%; 
+}
+   
+.btn-primary {
+   background-color:#00CDCD;
+}
+.About #intro {
+   height: 100%;
+}
+
+.About {
+   background: url("http://lucykatecrochet.com/wp-content/uploads/2015/08/learntocrochet.jpg");
+   background-size: cover;
+}
+
+/*=============MEDIA QUERIES=================*/
 
 @media (min-width: 320px) {
     #background-video{
@@ -117,3 +145,4 @@
         width: 50%;
     }
  }
+

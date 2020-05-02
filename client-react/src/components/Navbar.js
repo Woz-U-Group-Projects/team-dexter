@@ -14,9 +14,6 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto col-md-9">
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/task">Tasks</NavLink>
-                    </li>
-                    <li className="nav-item">
                         <NavLink className="nav-link" to="/about">About</NavLink>
                     </li>
                 </ul>

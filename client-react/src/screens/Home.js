@@ -18,6 +18,13 @@ class Home extends React.Component {
 
   componentDidMount() {
     document.title = siteTitle + " - " + tagLine;
+    let bgvideo  = document.getElementById("background-video");
+    bgvideo.autoPlay = true;
+  }
+
+  componentWillUnmount() {
+    let bgvideo  = document.getElementById("background-video");
+    bgvideo.pause();
   }
 
   onLogin = (e) => {
@@ -55,7 +62,7 @@ class Home extends React.Component {
               error={this.state.error}></Login>)
               : null}
         </div>
-        <video id="background-video" className="img-fluid" loop autoPlay>
+        <video id="background-video" className="img-fluid" loop autoPlay muted>
             <source src={BGVideo} type="video/mp4" />
         </video>
       </header>
