@@ -60,7 +60,7 @@ class Posts extends React.Component {
           <ul>
             {this.state.posts.map(p => (
               <li key={p.id}>
-                {p.postMessage} <button type="button" className="btn btn-success">Comment</button><button type="button" className="btn btn-danger">Delete</button>
+                {p.postMessage} <button type="button" >Comment</button><button type="button">Delete</button>
               </li>
             ))}
           </ul>
