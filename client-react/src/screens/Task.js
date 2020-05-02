@@ -41,6 +41,7 @@ class Task extends React.Component {
       this.getData();
     });
   };
+  
   deleteTask = (id) => {
     let url = `http://localhost:8080/tasks/${id}/delete`;
     axios.delete(url, { taskid: this.id}).then(response => {
