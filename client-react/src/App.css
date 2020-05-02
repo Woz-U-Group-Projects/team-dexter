@@ -9,7 +9,14 @@
     padding: 0.5em 5em;
 }
 
-.navbar{
+#postsdiv{
+    margin : auto;
+    width : 50%;
+    padding : 10px;
+}
+
+#post {
+    padding : 20px;
 }
 
 .navbar-light .navbar-nav .nav-link.active {

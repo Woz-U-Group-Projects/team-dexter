@@ -45,22 +45,26 @@ class Posts extends React.Component {
   //   axios.delete(url, { postid: this.id}).then(response => {
   //     console.log(response)
   //   });
-    
+
   // };
 
   render() {
     return (
-      <div>
-        <h3>(React)</h3>
-        <input ref={this.postName} />
-        <button type="button" className="btn btn-primary" onClick={this.addPost}>add</button>
-        <ul>
-          {this.state.posts.map(p => (
-            <li key={p.id}>
-              {p.postMessage} <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
-            </li>
-          ))}
-        </ul>
+      <div id="postsdiv">
+        <h3>Post</h3>
+        <div>
+          <input ref={this.postName} />
+          <button type="button" className="btn btn-primary" onClick={this.addPost}>add</button>
+        </div>
+        <div id = "post">
+          <ul>
+            {this.state.posts.map(p => (
+              <li key={p.id}>
+                {p.postMessage} <button type="button" className="btn btn-success">Comment</button><button type="button" className="btn btn-danger">Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
