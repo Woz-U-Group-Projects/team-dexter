@@ -16,7 +16,11 @@
     color: var(--primary-color);
 }
 
+<<<<<<< HEAD
 /*=============== Home.js / Login Form ===================*/
+=======
+/*=============== Home.js ===================*/
+>>>>>>> 50cd6bbf667fe071a500263bbfa3ad8cb19fe654
 
 #background-video{
     width: 100%;
@@ -50,9 +54,12 @@
     background: rgba(255,255,255, 0.5);
 }
 
+<<<<<<< HEAD
 #homepage-login .alert{
     text-align: center;
 }
+=======
+>>>>>>> 50cd6bbf667fe071a500263bbfa3ad8cb19fe654
 /*============ Footer.js ==================*/
 .navbar-dark {
     background-color: #38E1E5 !important;
@@ -68,6 +75,7 @@
     color: #38E1E5 !important;
 }
 
+<<<<<<< HEAD
 /*============ About.js ==================*/
 .About {
     text-align: center;
@@ -93,6 +101,8 @@
 
 /*=============MEDIA QUERIES=================*/
 
+=======
+>>>>>>> 50cd6bbf667fe071a500263bbfa3ad8cb19fe654
 @media (min-width: 320px) {
     #background-video{
         width: auto;
@@ -144,5 +154,9 @@
     #hero-content{
         width: 50%;
     }
+<<<<<<< HEAD
  }
 
+=======
+ }
+>>>>>>> 50cd6bbf667fe071a500263bbfa3ad8cb19fe654
