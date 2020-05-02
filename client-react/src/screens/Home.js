@@ -1,11 +1,9 @@
 import React from 'react';
+
 import Logo from '../static/logo.png';
 import "../App.css";
 import Login from '../components/Login';
-import Posts from '../components/Posts';
-import { withRouter } from 'react-router-dom';
 import BGVideo from "../static/homepage-bg-vid.mp4";
-// import axios from "axios";
 
 const siteTitle = "inStitches";
 const tagLine = "The home for all things crochet, knitting and sewing";
@@ -22,7 +20,7 @@ class Home extends React.Component {
     document.title = siteTitle + " - " + tagLine;
   }
 
-  onLogin = () => {
+  onLogin = (e) => {
     fetch("http://localhost:8080/login", {
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
     method: "POST",
@@ -32,15 +30,13 @@ class Home extends React.Component {
     .then(token => {
       if (token) {
         this.setState({ ...this.state, token: token });
+        e.preventDefault();
+        window.location.href = '/feed';
+      e.preventDefault();
       } else {
         this.setState({ ...this.state, error: "Unable to login with username and password." });
       }
     });
-  }
-
-  onGetPosts = (e) => {
-    e.preventDefault();
-    this.e.history.push('/feed');
   }
 
   onUsernameChange = (e) => this.setState({ ...this.state, username: e.target.value });
@@ -65,7 +61,7 @@ class Home extends React.Component {
       </header>
     );
   }
-}
 
+}
 
 export default Home;

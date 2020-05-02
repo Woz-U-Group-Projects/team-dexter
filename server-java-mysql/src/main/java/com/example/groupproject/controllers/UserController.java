@@ -49,17 +49,19 @@ public class UserController {
 		 userService.Save(newUser);
 	 }
 	 
-	 @PutMapping("/{id}")
+	 @PutMapping("/update/{id}")
 	 public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
 		 User foundUser = userRepository.findById(id).orElse(null);
 		 if(foundUser != null) {
 			foundUser.setUsername(user.getUsername());
+			foundUser.setFirstname(user.getFirstname());
+			foundUser.setLastname(user.getLastname());
 			userRepository.save(foundUser);
 		 }
 		 return null;
 	 }
 	 
-	 @DeleteMapping("/{id}")
+	 @DeleteMapping("/delete/{id}")
 	 public ResponseEntity<User> deleteUser(@PathVariable(value="id") Long id) {
 		 User foundUser = userRepository.findById(id).orElse(null);
 		 

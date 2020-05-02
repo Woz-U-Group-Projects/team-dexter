@@ -7,9 +7,29 @@ export default class Feed extends React.Component {
     this.state = { posts: [], files: [], selectedFile: null };
     this.postTitle = React.createRef();
   }
-
+  
   componentDidMount() {
     this.getPosts();
+    this.getCurrentUser();
+  }
+
+    getCurrentUser = (e) => {
+    fetch("http://localhost:8080/login", {
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    method: "GET",
+    body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    })
+    .then(res => res.headers.get("authorization"))
+    .then(token => {
+      if (token) {
+        this.setState({ ...this.state, token: token });
+        e.preventDefault();
+        window.location.href = '/feed';
+      e.preventDefault();
+      } else {
+        this.setState({ ...this.state, error: "Unable to login with username and password." });
+      }
+    });
   }
 
   getPosts = () => {

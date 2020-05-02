@@ -26,8 +26,11 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-//	@OneToMany(mappedBy = "user")
-//	private Collection<Post> posts;
+	@Column(nullable = true)
+	private String firstname;
+	
+	@Column(nullable = true)
+	private String lastname;
 
 	public Long getId() {
 		return id;
@@ -53,13 +56,19 @@ public class User {
 		this.password = password;
 	}
 
-//	public Collection<Post> getPosts() {
-//		return posts;
-//	}
-//
-//	public void setPosts(Collection<Post> posts) {
-//		this.posts = posts;
-//	}
-	
+	public String getFirstname() {
+		return firstname;
+	}
 
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 }
