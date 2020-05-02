@@ -1,7 +1,5 @@
 import React from "react";
-import Home from '../screens/Home';
-import Task from '../screens/Task';
-import About from '../screens/About';
+import Search from "./components/search.js";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -12,9 +10,7 @@ const Routes = () => (
     <Router>
         <Navbar />
         <Switch>
-            <Route exact path = "/" component={Home} />
-            <Route path = "/about" component={About} />
-            <Route path = "/task" component={Task} />
+            <Route path = "/search" component={Search} />
         </Switch>
         <Footer />
     </Router>
