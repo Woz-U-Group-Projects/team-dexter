@@ -207,7 +207,6 @@
         width: 50%;
     }
  }
-<<<<<<< HEAD
 
 
 
@@ -285,30 +284,3 @@
       #myUL li a:hover:not(.header) {
         background-color: #eee; /* Add a hover effect to all links, except for headers */
       }}
-=======
- 
-
-.About img {
-    display: block;
-    margin:10 auto;
-    border-radius: 5em; 
-
-}
-    
-
-.btn-primary {
-    background-color:#00CDCD;
-}
-.About, 
-    #intro {
-        height: 100%;
-    }
-    #intro {
-        background: url("http://lucykatecrochet.com/wp-content/uploads/2015/08/learntocrochet.jpg")
-    }
-
-
-
-
-  
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
