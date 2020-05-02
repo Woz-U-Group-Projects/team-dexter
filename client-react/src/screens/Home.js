@@ -18,12 +18,12 @@ class Home extends React.Component {
 
   componentDidMount() {
     document.title = siteTitle + " - " + tagLine;
-    let bgvideo  = document.getElementById("background-video");
+    let bgvideo = document.getElementById("background-video");
     bgvideo.autoPlay = true;
   }
 
   componentWillUnmount() {
-    let bgvideo  = document.getElementById("background-video");
+    let bgvideo = document.getElementById("background-video");
     bgvideo.pause();
   }
 
@@ -38,7 +38,7 @@ class Home extends React.Component {
       if (token) {
         this.setState({ ...this.state, token: token });
         e.preventDefault();
-        window.location.href = '/feed';
+        window.location.href = '/posts';
       e.preventDefault();
       } else {
         this.setState({ ...this.state, error: "Unable to login with username and password." });

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import '../search.css';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ class Search extends React.Component {
 
   getData = () => {
     // Java Spring Boot uses port 8080
-    //let url = "http://localhost:8080/tasks";
+    let url = "http://localhost:8080/tasks";
 
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";

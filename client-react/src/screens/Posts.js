@@ -51,7 +51,7 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
-        <h3>(React)</h3>
+        <h3>Posts</h3>
         <input ref={this.postName} />
         <button type="button" className="btn btn-primary" onClick={this.addPost}>add</button>
         <ul>

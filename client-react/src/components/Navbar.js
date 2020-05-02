@@ -17,7 +17,7 @@ function Navbar() {
                         <NavLink className="nav-link" to="/about">About</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/search"><i class="fas fa-search"></i></NavLink>
+                        <NavLink className="nav-link" to="/search"><i className="fas fa-search"></i></NavLink>
                     </li>
                 </ul>
                 <ul className="navbar-nav mr-auto col-md-3">

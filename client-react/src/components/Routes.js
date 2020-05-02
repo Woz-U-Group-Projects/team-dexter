@@ -3,6 +3,7 @@ import Home from '../screens/Home';
 import About from '../screens/About';
 import Posts from '../screens/Posts';
 import Search from '../screens/Search';
+import SignUp from '../screens/SignUp';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -14,8 +15,10 @@ const Routes = () => (
         <Navbar />
         <Switch>
             <Route exact path = "/" component={Home} />
-            <Route path = "/about" component={About} />
-            <Route path = "/search" component={Search} />
+            <Route path ="/about" component={About} />
+            <Route path ="/search" component={Search} />
+            <Route path ="/posts" component={Posts} />
+            <Route path ="/signup" component={SignUp} />
         </Switch>
         <Footer />
     </Router>
