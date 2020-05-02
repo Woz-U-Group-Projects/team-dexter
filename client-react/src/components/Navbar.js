@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from '../static/logo.png';
 
 function Navbar() {
@@ -15,6 +15,9 @@ function Navbar() {
                 <ul className="navbar-nav mr-auto col-md-9">
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/about">About</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/search"><i class="fas fa-search"></i></NavLink>
                     </li>
                 </ul>
                 <ul className="navbar-nav mr-auto col-md-3">
