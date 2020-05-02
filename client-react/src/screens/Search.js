@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -14,18 +13,18 @@ class Search extends React.Component {
 
   getData = () => {
     // Java Spring Boot uses port 8080
-    //let url = "http://localhost:8080/tasks";
+    let url = "http://localhost:8080/tasks";
 
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";
 
     // Express uses port 3001 (react uses 3000)
-    let url = "http://localhost:3001/tasks";
+    // let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ search: response.data }));
   };
 
   addSearch = () => {
-    let url = "http://localhost:3001/tasks";
+    let url = "http://localhost:8080/tasks";
     axios.post(url, { name: this.searchName.current.value }).then(response => {
       // refresh the data
       this.getData();
@@ -35,13 +34,13 @@ class Search extends React.Component {
   };
 
   updateSearch = (id) => {
-    let url = "http://localhost:3001/tasks/" + id + "/complete";
+    let url = "http://localhost:8080/tasks/" + id + "/complete";
     axios.put(url, { searchid: this.id, isComplete: this.isComplete }).then(response => {
       this.getData();
     });
   };
   deleteSearch = (id) => {
-    let url = `http://localhost:3001/tasks/${id}/delete`;
+    let url = `http://localhost:8080/tasks/${id}/delete`;
     axios.delete(url, { searchid: this.id}).then(response => {
       console.log(response)
     });
