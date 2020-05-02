@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-=======
-  
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
 :root {
     --primary-color: #38E1E5;
 }
 
 /*================ Navbar.js ================*/
-<<<<<<< HEAD
 #site-nav{
     background-color: white;
     border-bottom: 2px solid var(--primary-color);    
@@ -22,39 +17,13 @@
 
 #post {
     padding : 20px;
-=======
-html, body {
-    background: url('http://lucykatecrochet.com/wp-content/uploads/2015/08/learntocrochet.jpg')no-repeat fixed;
-    position: sticky;    
-    
-    height: 100%;
-    background-size: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
-.About {
-    width: 70%;
-    margin: 0 auto;
-}
-.About p, h1,h5 {
-    text-align: center;
-   
-}
-.navbar {
-    padding: .8rem
-
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
 }
 
 .navbar-light .navbar-nav .nav-link.active {
     color: var(--primary-color);
 }
 
-<<<<<<< HEAD
 /*=============== Home.js / Login Form ===================*/
-=======
-/*=============== Home.js ===================*/
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
 
 #background-video{
     width: 100%;
@@ -88,12 +57,9 @@ html, body {
     background: rgba(255,255,255, 0.5);
 }
 
-<<<<<<< HEAD
 #homepage-login .alert{
     text-align: center;
 }
-=======
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
 /*============ Footer.js ==================*/
 .navbar-dark {
     background-color: #38E1E5 !important;
@@ -109,7 +75,6 @@ html, body {
     color: #38E1E5 !important;
 }
 
-<<<<<<< HEAD
 /*============ About.js ==================*/
 .About {
     text-align: center;
@@ -190,8 +155,6 @@ html, body {
   }
 /*=============MEDIA QUERIES=================*/
 
-=======
->>>>>>> 21048a7678ce4d9aaa2c5e06c5456b529f496919
 @media (min-width: 320px) {
     #background-video{
         width: auto;
