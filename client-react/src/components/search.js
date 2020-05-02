@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
+import App from "../App.css";
 
-class Search extends React.Component {
+class search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { search: [] };
@@ -92,6 +93,6 @@ class Search extends React.Component {
 </div>
     );
   }
-    }
+}
 
-export default Search;
+export default search;
