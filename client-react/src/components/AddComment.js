@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-
+//needs controller
 class AddComment extends Component {
     constructor(props) {
         super(props)

@@ -3,7 +3,7 @@ import DateStamp from './DateStamp';
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-
+//needs controller
 class Comments extends Component {
     constructor() {
         super()

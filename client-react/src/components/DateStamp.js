@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class DateStamp extends Component {
 
-
+//needs controller
     getDate() {
         let date = Number(this.props.date)
         let displayDate = new Date(date)

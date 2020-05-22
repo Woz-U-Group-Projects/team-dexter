@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+//needs controller
 class PostForm extends Component {
   constructor() {
     super()
