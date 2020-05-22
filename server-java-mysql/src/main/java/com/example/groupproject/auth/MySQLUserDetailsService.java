@@ -1,42 +1,37 @@
 package com.example.groupproject.auth;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.groupproject.models.User;
-import com.example.groupproject.models.UserRepository;
+import com.example.groupproject.repository.UserRepository;
 
 @Service
 public class MySQLUserDetailsService implements UserDetailsService {
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
+	UserRepository userRepository;
+	
 	@Override
-	public UserDetails loadUserByUsername(String username) {
-		User user = userRepository.findByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException(username);
-		}
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities());
+	@Transactional
+	public UserDetails loadUserByUsername(String usernameOrEmail)
+	throws UsernameNotFoundException{
+		User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
+				.orElseThrow(() -> 
+				new UsernameNotFoundException("user not found with username or email: " + usernameOrEmail)
+				);
+		return UserPrincipal.create(user);
 	}
+	
+	@Transactional
+	public UserDetails loadUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(
+            () -> new UsernameNotFoundException("User not found with id : " + id)
+        );
 
-	public UserDetails Save(User newUser) {
-		newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-		User savedUser = userRepository.save(newUser);
-		return new org.springframework.security.core.userdetails.User(savedUser.getUsername(), savedUser.getPassword(), getAuthorities());
-	}
-
-	private List<SimpleGrantedAuthority> getAuthorities() {
-		List<SimpleGrantedAuthority> authList = new ArrayList<>();
-		authList.add(new SimpleGrantedAuthority("ROLE_USER"));
-		return authList;
-	}
+        return UserPrincipal.create(user);
+    }
 }

@@ -13,6 +13,7 @@ public class Post {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "post_id")
   private Long id;
   private String postMessage;
   
@@ -32,7 +33,5 @@ public class Post {
   public void setPostMessage(String postMessage) {
     this.postMessage = postMessage;
   }
-
- 
-
+	 
 }

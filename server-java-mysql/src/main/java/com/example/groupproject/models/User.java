@@ -1,42 +1,68 @@
 package com.example.groupproject.models;
 
-//import java.util.Collection;
-//import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
+
+import com.example.groupproject.models.audit.DateAudit;
+
+@SuppressWarnings("serial")
 @Entity
-@Table(name = "user")
-public class User {
-	
+@Table(name = "site_users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
+		@UniqueConstraint(columnNames = { "email" }) })
+public class User extends DateAudit {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable = false, unique = true)
+
+	@NotBlank
 	private String username;
 
-	@Column(nullable = false)
+	@NotBlank
+	private String name;
+
+	@NotBlank
 	private String password;
+
+	@NotBlank
+	private String email;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
+
+	public User() {
+		
+	}
 	
-	@Column(nullable = true)
-	private String firstname;
 	
-	@Column(nullable = true)
-	private String lastname;
+	public User(@NotBlank String username, @NotBlank String name, @NotBlank String password,
+			@NotBlank String email) {
+		this.username = username;
+		this.name = name;
+		this.password = password;
+		this.email = email;
+	}
+
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setUserId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -56,19 +82,29 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
+	
 }

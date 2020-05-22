@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.groupproject.models.Post;
-import com.example.groupproject.models.PostRepository;
+import com.example.groupproject.repository.PostRepository;
 
 @RestController
 @RequestMapping("/posts")
@@ -51,3 +51,4 @@ public class PostController {
   }
 
 }
+
