@@ -2,7 +2,7 @@ import React from "react";
 import KHoflerImg from "../static/03-07-2019-16-31-23.jpeg";
 import VStoryImg from "../static/IMG-2379.jpg";
 import WHardinImg from "../static/IMG-2438.JPG";
-import ACarpenterImg from "../static/received_538943533438579.jpeg";
+import ACarpenterImg from "../static/IMG-2439.jpg";
 
 const siteTitle = "inStitches";
 const pageTitle = "About Us";
