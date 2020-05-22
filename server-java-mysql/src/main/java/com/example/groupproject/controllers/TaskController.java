@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.groupproject.models.Task;
-import com.example.groupproject.models.TaskRepository;
+import com.example.groupproject.repository.TaskRepository;
 
 @RestController
 @RequestMapping("/tasks")

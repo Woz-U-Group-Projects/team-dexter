@@ -1,53 +1,59 @@
 package com.example.groupproject.auth;
 
-import com.auth0.jwt.JWT;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.security.core.*;
-import org.springframework.security.authentication.*;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.util.StringUtils;
+import org.springframework.web.filter.OncePerRequestFilter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
-import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static com.example.groupproject.auth.AuthConstants.*;
 
-public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-	  private AuthenticationManager authenticationManager;
-	  
-	  public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
-	    this.authenticationManager = authenticationManager;
-	  }
 
-	  @Override
-	  public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
-	    try {
-	      com.example.groupproject.models.User creds = new ObjectMapper()
-	        .readValue(req.getInputStream(), com.example.groupproject.models.User.class);
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-	      return authenticationManager.authenticate(
-	        new UsernamePasswordAuthenticationToken(
-	          creds.getUsername(),
-	          creds.getPassword(),
-	          new ArrayList<>())
-	      );
-	    } catch (IOException e) {
-	      throw new RuntimeException(e);
-	    }
-	  }
+	@Autowired
+	private JwtTokenProvider tokenProvider;
 
-	  @Override
-	  protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth) throws IOException, ServletException {
-	    String token = JWT.create()
-	      .withSubject(((User) auth.getPrincipal()).getUsername())
-	      .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-	      .sign(HMAC512(SECRET.getBytes()));
-	    res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-	  }
+	@Autowired
+	private MySQLUserDetailsService mySQLUserDetailsService;
 
-	  @Override
-	  protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed) throws IOException, ServletException {
-	    super.unsuccessfulAuthentication(req, res, failed);
-	  }
+	private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		try {
+			String jwt = getJwtFromRequest(request);
+
+			if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+				Long userId = tokenProvider.getUserIdFromJWT(jwt);
+
+				UserDetails userDetails = mySQLUserDetailsService.loadUserById(userId);
+				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+						userDetails, null, userDetails.getAuthorities());
+				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+				SecurityContextHolder.getContext().setAuthentication(authentication);
+			}
+		} catch (Exception ex) {
+			logger.error("Could not set user authentication in security context", ex);
+		}
+
+		filterChain.doFilter(request, response);
 	}
+
+	private String getJwtFromRequest(HttpServletRequest request) {
+		String bearerToken = request.getHeader("Authorization");
+		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+			return bearerToken.substring(7, bearerToken.length());
+		}
+		return null;
+	}
+}

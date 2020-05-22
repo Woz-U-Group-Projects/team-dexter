@@ -13,7 +13,7 @@ const tagLine = "The home for all things crochet, knitting and sewing";
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { token: "", username: "", password: "", posts: [], error: "" };
+    this.state = { token: "", usernameOrEmail: "", password: "", posts: [], error: "" };
   }
 
   componentDidMount() {
@@ -21,10 +21,10 @@ class Home extends React.Component {
   }
 
   onLogin = (e) => {
-    fetch("http://localhost:8080/login", {
+    fetch("http://localhost:8080/api/auth/signin", {
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
     method: "POST",
-    body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    body: JSON.stringify({ usernameOrEmail: this.state.usernameOrEmail, password: this.state.password })
     })
     .then(res => res.headers.get("authorization"))
     .then(token => {
@@ -39,7 +39,7 @@ class Home extends React.Component {
     });
   }
 
-  onUsernameChange = (e) => this.setState({ ...this.state, username: e.target.value });
+  onUsernameOrEmailChange = (e) => this.setState({ ...this.state, usernameOrEmail: e.target.value });
   onPasswordChange = (e) => this.setState({ ...this.state, password: e.target.value });
 
   render() {
@@ -49,7 +49,7 @@ class Home extends React.Component {
           <img className="logo" src={Logo} width="150px" alt="instiches-header" />
           <p className="tagline">The home for all things crochet, knitting, and sewing</p>
             {(!this.state.token || this.state.token === "")
-              ? (<Login onUsernameChange={this.onUsernameChange}
+              ? (<Login onUsernameOrEmailChange={this.onUsernameOrEmailChange}
               onPasswordChange={this.onPasswordChange}
               onLogin={this.onLogin}
               error={this.state.error}></Login>)

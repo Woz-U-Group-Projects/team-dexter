@@ -1,10 +1,6 @@
 package com.example.groupproject.auth;
 
 public class AuthConstants {
-	public static final String SECRET = "SuperSecretKey";
-	public static final long EXPIRATION_TIME = 432_000_000;
-	public static final String TOKEN_PREFIX = "Bearer ";
-	public static final String HEADER_STRING = "Authorization";
-	public static final String SIGN_UP_URL = "/api/user/signup";
-	public static final String LOG_IN_URL = "/login";
+	public static final String SECRET = "SuperDuperSecretKey";
+	public static final long EXPIRATION = 680_000_000;
 }
